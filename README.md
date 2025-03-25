@@ -10,13 +10,46 @@ On macOS, you can install libmagic using Homebrew:
 brew install libmagic
 ```
 
-### For For Linux
+### For Linux
 
 Most Linux distributions provide libmagic through their package managers. For example, on Debian-based systems like Ubuntu, you can install it with:
 
 ```bash
 sudo apt-get install libmagic1
 ```
+### For Windows
+
+On Windows, installing libmagic requires additional steps, as it is not natively available. To set it up:​
+
+1. Install the python-magic-bin package, which includes the necessary libmagic binaries for Windows:
+
+```bash
+pip install python-magic-bin
+```
+
+This package provides the libmagic functionality tailored for Windows environments.
+
+2. Ensure the libmagic DLLs are accessible:
+
+The python-magic-bin package installs the required DLLs, but you may need to ensure they are in your system's PATH. Locate the libmagic DLLs within your Python environment, typically found in the Lib\site-packages\python_magic_bin directory. Add this path to your system's PATH environment variable if it's not already included.
+
+3. Verify the installation:
+
+After installation, you can verify that libmagic is working by running a simple test in Python:
+
+```python
+import magic
+
+print(magic.from_buffer(b'#!/usr/bin/env python3\nprint("Hello, World!")', mime=True))
+```
+
+If configured correctly, this should output:
+
+```arduino
+text/x-script.python
+```
+
+By following these steps, you should have libmagic properly installed on your Windows system, enabling file type identification in your Python applications.​
 
 ## Packages
 Python 3.13
