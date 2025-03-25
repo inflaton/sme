@@ -11,6 +11,7 @@ echo Evaluating $MODEL
 ollama run $MODEL 'hi'
 ollama ps
 
+export OPENAI_API_KEY=ollama
 export BASE_URL=http://localhost:11434/v1
 export FINANCE_CLERK_MODEL=$MODEL
 export SUPERVISOR_MODEL=$MODEL
