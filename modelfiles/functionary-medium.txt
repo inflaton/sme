@@ -1,0 +1,2 @@
+FROM hf.co/second-state/functionary-medium-v3.1-GGUF:Q4_K_M 
+PARAMETER num_ctx 2048
