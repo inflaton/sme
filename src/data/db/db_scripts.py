@@ -92,7 +92,7 @@ def set_db(reset=False):
     """
     Reset db to the initial state
     """
-    synthetic_data_path = f"{cwd}/src/data/synthetic_data"
+    synthetic_data_path = f"{cwd}/dataset"
     sqlite_path = get_db_path()
 
     sql_builder = [

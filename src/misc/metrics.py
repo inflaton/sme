@@ -120,29 +120,12 @@ def calculate_metrics(db_filepath, including_df=True, debug=False):
     # Close the database connection
     conn.close()
 
-    email_ids = get_email_id_associated_with_duplicated_invoice_id(debug=debug)
-
-    if debug:
-        print("#Email ids associated with duplicated invoice ids:", len(email_ids))
-        print(df[df["email_id"].isin(email_ids)]["attachments"].value_counts())
-
-    ## DF without repeated Invoice ID's
-    df_filtered = df[~df["email_id"].isin(email_ids)].copy().reset_index(drop=True)
-
-    return get_metrics(df_filtered, debug=debug, including_df=including_df)
+    return get_metrics(df, debug=debug, including_df=including_df)
 
 
 if __name__ == "__main__":
-    db_filepath = "results/llama3.2-vision_11b-qwen2.5_72b/emails.db"
+    db_filepath = "src/data/db/llama3.2-vision_11b-qwen2.5_7b/emails.db"
     metrics = calculate_metrics(db_filepath, including_df=True, debug=True)
     df = metrics["df"]
     del metrics["df"]
-    print("Full metrics:", metrics)
-
-    df1 = df[df["attachments"] != ""].copy()
-    metrics = get_metrics(df1, debug=True)
-    print("Vision metrtics:", metrics)
-
-    df1 = df[df["attachments"] == ""].copy()
-    metrics = get_metrics(df1, debug=True)
-    print("Non-vision metrtics:", metrics)
+    print("metrics:", metrics)

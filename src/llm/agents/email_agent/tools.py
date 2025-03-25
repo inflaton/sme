@@ -24,7 +24,7 @@ logging = BeautifiedLogging()
 def ocr_tool(image_path: str) -> str:
     """OCR tools parse invoice images to produce useful data for reconciliation"""
 
-    file_path = f"{cwd}/src/data/synthetic_data/attachments/{image_path}"
+    file_path = f"{cwd}/dataset/attachments/{image_path}"
 
     ocr_prompt = """Act as an OCR assistant. Analyze the provided image and:
     1. Recognize all visible text in the image as accurately as possible.
