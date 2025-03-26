@@ -48,14 +48,12 @@ for subfolder in subfolders:
         db_filepath = f"{dir}/emails.db"
         metrics = calculate_metrics(db_filepath)
         df = metrics["df"]
-        df = df[df["attachments"] != ""].copy()
         metrics = get_metrics(df)
 
         if platform != "OpenAI":
             power = total_power_in_watt(
-                f"{dir}/power_with_vision.csv"
-            )  # + total_power_in_watt(f"{result}/power_without_vision.csv")
-            # power /= 2
+                f"results/{platform}_{model}/power_with_vision.csv"
+            )
 
             idle_power_csv = f"results/power_idle_{platform}.csv"
             if not Path(idle_power_csv).exists():
