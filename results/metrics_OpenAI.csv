@@ -1,0 +1,3 @@
+platform,model,task_completion_rate,task_success_rate,mean_execution_time,total_tasks,SUCCESS,ERROR,NO_INVOICE
+OpenAI,gpt-4o-mini,1,0.9767676767676767,11.385764423232324,990,967,21,2
+OpenAI,gpt-4o,1,0.9313131313131313,11.128500827272727,990,922,15,53

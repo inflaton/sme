@@ -272,27 +272,24 @@ The data under the following headers will be populated after the run:
 - reconciliation_state
 - email_details
 
-#### Final Metrics Calculation
-1. *Organize Result Files*: Move the contents of the src/data/db/* subdirectories into the appropriate results folders based on the following mapping:
+#### Calculation and Visualization of Metrics
 
-```python
-results_mapping = {
-    "RTX A6000": {
-        "qwen2.5:7b": "results/llama3.2-vision_11b-qwen2.5_7b",
-        "functionary-small": "results/llama3.2-vision_11b-functionary-small",
-        "qwen2.5:32b": "results/llama3.2-vision_11b-qwen2.5_32b",
-        "functionary-medium": "results/llama3.2-vision_11b-functionary-medium",
-        "qwen2.5:72b": "results/llama3.2-vision_11b-qwen2.5_72b",
-    },
-    "RTX 4090": {
-        "qwen2.5:7b": "results/llama3.2-vision_11b-qwen2.5_7b-RTX4090",
-        "functionary-small": "results/llama3.2-vision_11b-functionary-small-RTX4090",
-    },
-    "OpenAI": {
-        "gpt-4o-mini": "results/gpt-4o-mini-gpt-4o-mini",
-        "gpt-4o": "results/gpt-4o-gpt-4o",
-    },
-}
+1. *Calculation of Metrics*
+
+We’ve provided a Python script to calculate metrics from results stored under the src/data/db folder. Below is a sample run of the script:
+
+```bash
+$ python src/misc/calc_metrics.py src/data/db/RTX\ A6000 RTX\ A6000
+Calculating metrics for directory: src/data/db/RTX A6000 for platform: RTX A6000 ...
+Loading environment variables from: /Users/inflaton/code/papers/sme/.env
+Calculating metrics for model: modelqwen2.5_7b...
+Calculating metrics for model: modelfunctionary-small...
+Calculating metrics for model: modelqwen2.5_32b...
+Calculating metrics for model: modelfunctionary-medium...
+Calculating metrics for model: modelqwen2.5_72b...
+Metrics saved as src/data/db/metrics_RTX A6000.csv
 ```
 
-2. *Run Data Analysis Notebook*: Execute the Jupyter notebook located at `notebooks/01_Data_Analysis_all_models.ipynb`b. This will process the organized data, compute final metrics, and generate the corresponding plots.
+2. *Visualization of Metrics* 
+
+Open and execute the Jupyter notebook located at `notebooks/01_Data_Analysis_all_models.ipynb`. This notebook merges all the metrics files generated in the previous step and produces the plots included in the paper.

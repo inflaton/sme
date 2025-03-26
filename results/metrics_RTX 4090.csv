@@ -1,0 +1,3 @@
+platform,model,task_completion_rate,task_success_rate,mean_execution_time,total_tasks,SUCCESS,ERROR,NO_INVOICE,power
+RTX 4090,qwen2.5_7b,1,0.8737373737373737,21.020920795959594,990,865,123,2,121.77820000000003
+RTX 4090,functionary-small,1,0.8878787878787879,3.5681254303030303,990,879,10,101,146.6126
