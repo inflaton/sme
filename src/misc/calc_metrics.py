@@ -50,7 +50,7 @@ for subfolder in subfolders:
         df = metrics["df"]
         metrics = get_metrics(df)
 
-        if platform != "OpenAI":
+        try:
             power = total_power_in_watt(
                 f"results/{platform}_{model}/power_with_vision.csv"
             )
@@ -61,6 +61,8 @@ for subfolder in subfolders:
             power -= total_power_in_watt(idle_power_csv)
 
             metrics["power"] = power
+        except FileNotFoundError:
+            print(f"Power data not found for model: model{model}")
 
         # Add non-metric columns and metrics to a single dictionary
         row_data = {"platform": platform, "model": model, **metrics}
